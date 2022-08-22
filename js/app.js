@@ -29,11 +29,13 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function multiply(a, b) { //eslint-disable-line
+  let product = a * b;
 
+  return [product, 'The product of ' + a + ' and ' + b + ' is ' + product + '.'];
 }
 
 // Here is the test for multiply(); uncomment it to run it
-// testMultiply(5,9);
+testMultiply(5,9);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. Don't forget to create a new branch for your work on the next question!
 
@@ -93,11 +95,18 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function multiplyArray(multArr) { //eslint-disable-line
+  let [a,b,c] = multArr; //  requires us to know that 3 things are within multArr
 
+  // how to multiply our values using multiply function?
+  let product1 = multiply(a, b); // return value => [number, string]
+  let product2 = multiply(product1[0], c); // return value => [number, string];
+  let string = `The numbers ${a},${b},${c} have a product of ${product2[0]}.`;
+
+  return [product2[0], string];
 }
 
 // Here is the test for multiplyArray(); uncomment it to run it
-// testMultiplyArray(testArray);
+testMultiplyArray(testArray);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. 
 
@@ -121,10 +130,17 @@ Test this function by hand in the console to get it working, and when you think 
 let testDynamicArray = [1,2,3,4,5]; //eslint-disable-line
 
 function multiplyAnyArray(dynamicArray) { //eslint-disable-line
-
+  let product = 1;
+  let string = 'The numbers ';
+  for (let i = 0; i < dynamicArray.length; i++) {
+    product = product * dynamicArray[i];
+    string += `${dynamicArray[i]},`;
+  }
+  string += ` have a product of ${product}.`;
+  console.log(product, string);
 }
 
 // Here is the test for multiplyArray(); uncomment it to run it
-// testMultiplyAnyArray(testDynamicArray);
+testMultiplyAnyArray(testDynamicArray);
 
 // Once you get the test passing, do an a-c-p cycle and synchronize the code between GitHub and your laptop. You're done! Submit the link to the repo following the instructions in Canvas.
